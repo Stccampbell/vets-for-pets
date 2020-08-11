@@ -9,6 +9,12 @@ const passport = require('passport');
 const app = express();
 require('dotenv').config();
 
+const authRouter = require('./routes/auth-routes');
+app.use('/auth', authRouter);
+
+const userRouter = require('./routes/user-routes');
+app.use('/user', userRouter);
+
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());

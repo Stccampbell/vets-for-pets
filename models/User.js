@@ -6,6 +6,7 @@ class User {
         this.username = username;
         this.email = email;
         this.password_digest = password_digest;
+        this.user_id = vets.user_id || null;
     }
 
     static findByUserName(username) {
