@@ -28,8 +28,17 @@ class User {
                 this
             )
             .then((savedUser) => Object.assign(this, savedUser));
-            
         
+    }
+
+    findUserVets() {
+        return db
+            .manyOrNone(
+                'SELECT * FROM vets WHERE user_id = $1', this.id)
+            .then((vets) => {
+                return vets.map((vet) => new Vet(vet));
+            });
+    
     }
 }
 
