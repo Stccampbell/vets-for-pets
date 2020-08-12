@@ -27,7 +27,7 @@ app.use(
         saveUninitialized: true,
     })
 );
-app.use(passport.initialize());
+app.use(passport.init());
 app.use(passport.session());
 
 app.set('views', 'views');
