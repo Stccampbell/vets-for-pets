@@ -39,13 +39,13 @@ app.listen(PORT, () => {
     console.log(`I'm listening on port ${PORT}`);
 });
 
-// //app.get('/', (req, res) => {
-//     res.render('index', {
-//         appName: 'vets-for-pets',
-//     });
-// });
+app.get('/', (req, res) => {
+    res.render('index', {
+        appName: 'vets-for-pets',
+    });
+});
 
-//app.use('/appName', appNameRouter);
+app.use('/vets-for-pets', vetsRouter);
 
 app.use('*', (req, res) => {
     res.status(404).send({
