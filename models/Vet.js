@@ -4,7 +4,7 @@ const db = require('../db/config');
 
 class Vet {
     constructor({ })
-}
+
 
 save() => {
     return db.one(
@@ -17,4 +17,5 @@ save() => {
     
 }
 
+}
 module.exports = Vet;

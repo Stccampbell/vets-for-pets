@@ -1,6 +1,6 @@
 const Vet = require('../models/Vet');
 
-
+const vetsController = {};
 
 vetsController.create = (req, res) => {
     new Vet({

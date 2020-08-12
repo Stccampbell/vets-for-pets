@@ -1,19 +1,22 @@
 const bcrypt = require('bcryptjs');
 
+const authHelpers = {
 
-
-function comparePass(userPassword, databasePassword) {
+    comparePass = (userPassword, databasePassword) => {
     return bcrypt.compareSync(userPassword, databasePassword);
-}
+    },
 
-function loginRedirect(req, res, next) {
+    loginRedirect = (req, res, next) => {
     if (req.user) return res.redirect('/user');
     return next();
-}
+    },
 
-function loginRequired(req, res, next) {
+    loginRequired = (req, res, next) => {
     if (!req.user) return res.direct('/auth/login');
     return next();
-}
+    }
+
+};
+
 
 module.exports = authHelpers;
