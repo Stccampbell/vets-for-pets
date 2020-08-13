@@ -18,11 +18,11 @@ vetsController.create = (req, res, next) => {
     };
 
 vetsController.index = (req, res) => {
-    return vets.getAll()
-    .then((vets) => {
+    return Vet.getAll()
+    .then(() => {
         res.render('/vets/')
     })
-}    
+};    
 
 
 
