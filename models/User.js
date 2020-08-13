@@ -6,16 +6,16 @@ class User {
         this.username = username;
         this.email = email;
         this.password_digest = password_digest;
-        this.user_id = vets.user_id || null;
+        // this.user_id = vets.user_id || null;
     }
 
     static findByUserName(username) {
         return db.oneOrNone
         ('SELECT * FROM users WHERE username = $1', username)
-        .then((user) => {
-            if (user) return new this(user);
-            else throw new Error('User not found');
-        });
+        // .then((user) => {
+        //     if (user) return new this(user);
+        //     else throw new Error('User not found');
+        // });
     }
 
     save() {

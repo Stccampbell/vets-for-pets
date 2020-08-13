@@ -9,7 +9,7 @@ const options = {
 
 const pgp = require('pg-promise')(options);
 
-const db = function setDatabase() {
+function setDatabase() {
     if (process.env.NODE_ENV === "development" || !process.env.NODE_ENV) {
         return pgp({
             database: DB_NAME,
@@ -21,4 +21,5 @@ const db = function setDatabase() {
     }
 }
 
-module.exports = db;
+
+module.exports = setDatabase();

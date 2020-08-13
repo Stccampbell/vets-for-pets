@@ -3,22 +3,22 @@ const User = require('../models/User');
 
 const usersController = { 
 
-    index = (req, res, next) => {
+    index: (req, res, next) => {
         req.user
-        .findUserVets()
-        .then((vets) => {
+        // .findUserVets()
+        // .then((vets) => {
             res.json({
                 message: 'Put a user profile page on this route',
                 data: {
-                    user: req.user, vets,
+                    user: req.user, /*vets,*/
                 },
             });
-        })
-        .catch(next);    
+        // })
+        // .catch(next);    
     },
 
 
-    create = (req, res, next) => {
+    create: (req, res, next) => {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(req.body.password, salt);
         new User({
@@ -35,7 +35,7 @@ const usersController = {
             })
             .catch(next);
     },
-};
 
+};
 
 module.exports = usersController;

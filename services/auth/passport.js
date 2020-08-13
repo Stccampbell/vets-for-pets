@@ -10,6 +10,8 @@ module.exports = (() => {
         console.log('deserialize')
         User.findByUserName(username)
         .then((user) => {
+            console.log(user);
+            console.log(done);
             return done(null, user);
         })
         .catch((err) => {

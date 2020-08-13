@@ -15,10 +15,13 @@ app.use('/auth', authRouter);
 const userRouter = require('./routes/user-routes');
 app.use('/user', userRouter);
 
+const vetsRouter = require('./routes/vets-routes');
+// app.use('/vets', vetsRouter);
+
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-appluse(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
 app.use(
     session({
@@ -27,7 +30,7 @@ app.use(
         saveUninitialized: true,
     })
 );
-app.use(passport.init());
+app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('views', 'views');
@@ -45,7 +48,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/vets-for-pets', vetsRouter);
+// app.use('/vets-for-pets', vetsRouter);
 
 app.use('*', (req, res) => {
     res.status(404).send({
