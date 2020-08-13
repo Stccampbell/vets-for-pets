@@ -3,12 +3,12 @@ const db = require('../db/config');
 
 const vetsController = {};
 
-vetsController.create = (req, res) => {
+vetsController.create = (req, res, next) => {
     new Vet({
         name: req.body.name,
-        location: req.body.location,
+        address: req.body.address,
         phone: req.body.phone,
-        website: req.body.website,            
+        url: req.body.url,            
         user_id: req.user.id,
     })
         .then((vet) => {

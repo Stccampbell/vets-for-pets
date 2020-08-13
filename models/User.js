@@ -2,10 +2,10 @@ const db = require('../db/config');
 
 class User {
     constructor({ id, username, email, password_digest }) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password_digest = password_digest;
+        this.id = user.id;
+        this.username = user.username;
+        this.email = user.email;
+        this.password_digest = user.password_digest;
         // this.user_id = vets.user_id || null;
     }
 

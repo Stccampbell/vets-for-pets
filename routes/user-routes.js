@@ -14,7 +14,9 @@ userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register');
 });
 
-userRouter.post('/', usersController.create);
+userRouter.post('/', usersController.create, (req, res) => {
+    res.render('user/add-vet-info');
+});
 
 userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
 

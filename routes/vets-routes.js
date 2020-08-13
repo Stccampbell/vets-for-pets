@@ -1,5 +1,6 @@
 const express = require('express');
 const vetsRouter = express.Router();
+const authHelpers = require('../services/auth/auth-helpers');
 
 const vetsController = require('../controllers/vets-controller');
 

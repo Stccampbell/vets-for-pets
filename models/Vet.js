@@ -3,7 +3,7 @@ const db = require('../db/config');
 
 
 class Vet {
-    constructor(vet) {
+    constructor({ id, name, address, phone, url, user_id }) {
         this.id = vet.id || null;
         this.name = vet.name;
         this.address = vet.address;
