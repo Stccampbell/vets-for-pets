@@ -6,7 +6,7 @@ const vetsController = require('../controllers/vets-controller');
 
 
 vetsRouter.get('/vets', vetsController.index);
-vetsRouter.post('/user', authHelpers.loginRequired, vetsController.create);
+vetsRouter.post('/vet', authHelpers.loginRequired, vetsController.create);
 
 vetsRouter.get('/add', authHelpers.loginRequired, (req, res) => {
     res.render('vets/vets-new');

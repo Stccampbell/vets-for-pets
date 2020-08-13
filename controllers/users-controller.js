@@ -30,7 +30,7 @@ const usersController = {
             .then((user) => {
                 req.login(user, (err) => {
                     if (err) return next(err);
-                    res.redirect('/user');
+                    res.redirect('user/vet-profile');
                 });
             })
             .catch(next);
