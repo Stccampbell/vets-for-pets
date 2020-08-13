@@ -5,16 +5,16 @@ const usersController = {
 
     index: (req, res, next) => {
         req.user
-        // .findUserVets()
-        // .then((vets) => {
+        .findUserVets()
+        .then((vets) => {
             res.json({
                 message: 'Put a user profile page on this route',
                 data: {
-                    user: req.user, /*vets,*/
+                    user: req.user, vets,
                 },
             });
-        // })
-        // .catch(next);    
+        })
+        .catch(next);    
     },
 
 
