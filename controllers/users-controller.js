@@ -1,4 +1,10 @@
-const userController = {
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
+const Vet = require('../models/Vet');
+const { render } = require('ejs');
+
+
+const usersController = {
     index(req, res) {
         res.json({
             message: 'put a user profile page on this route',
@@ -28,7 +34,7 @@ const userController = {
     },
 };
 
-module.exports = userController;
+module.exports = usersController;
 
 
 

@@ -22,6 +22,6 @@ function setDatabase() {
         return pgp(process.env.DATABASE_URL)
     }
 }
+const db = setDatabase();
 
-
-module.exports = setDatabase();
+module.exports = db;

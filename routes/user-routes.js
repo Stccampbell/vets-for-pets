@@ -11,15 +11,10 @@ userRouter.get('/login', authHelpers.loginRequired, (req, res) => {
 });
 
 userRouter.get('/')
-
+// userRouter.post('/new', usersController.create);
 userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register')
-    .then (userRouter.post('/', usersController.create, (req, res) => {
-        res.render('user/add-vet-info');
-    })
-);
-});
-// userRouter.get('/register', )
+    .then (userRouter.post('user', usersController.create()))});
 // userRouter.post('/new', usersController.create), 
 // userRouter.post('/make-profile', usersController.(req, res) => {
 //      res.render('user/add-vet-info');
@@ -29,4 +24,4 @@ userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
 
 
 
-module.exports = userRouter;
+module.exports = userRouter
