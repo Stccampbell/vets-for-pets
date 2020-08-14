@@ -11,7 +11,7 @@ authRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
 });
 
 authRouter.post('/login', 
-    passport.authenticate('/local', {
+    passport.authenticate('local', {
         successRedirect: '/user/vet-profile',
         failureRedirect: '/auth/register',
         failureFlash: true,

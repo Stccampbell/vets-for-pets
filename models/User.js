@@ -1,4 +1,5 @@
 const db = require('../db/config');
+const { hash } = require('bcryptjs');
 
 class User {
     constructor({ id, username, email, password_digest }) {

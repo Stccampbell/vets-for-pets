@@ -1,12 +1,12 @@
-const passport = require('./passport');
+const init = require('./passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const passport = require('passport');
 const User = require('../../models/user');
 const authHelpers = require('./auth-helpers');
 
 const options = {};
 
-// init();
+init();
 
 passport.use(
     new LocalStrategy(options, (username, password, done) => {

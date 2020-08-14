@@ -1,5 +1,5 @@
 require('dotenv').config();
-const DB_NAME = process.env.DB_NAME || "vets-for-pets";
+const DB_NAME = process.env.DB_NAME || "vets_for_pets";
 
 const options = {
     query: (e) => {

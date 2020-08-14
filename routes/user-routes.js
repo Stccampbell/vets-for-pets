@@ -14,7 +14,7 @@ userRouter.get('/')
 // userRouter.post('/new', usersController.create);
 userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register')})
-userRouter.post('/', usersController.create());    
+userRouter.post('/', usersController.create);    
 
     // .then (userRouter.post('user', usersController.create()))});
 // userRouter.post('/new', usersController.create), 

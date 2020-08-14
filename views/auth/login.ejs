@@ -1,7 +1,7 @@
 <%- include('../partials/boilerplate') %>
 
 <div class='app-container' id='user'>
-    <form method='GET' action='/login'>
+    <form method='POST' action='/auth/login'>
         <input name='username' type='text' placeholder='username' required />
         <input name='password' type='password' placeholder='password' required />
         <a href='/user/profile'><input type='submit' value='Log in!' /></a>
