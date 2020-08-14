@@ -14,7 +14,7 @@ userRouter.get('/')
 
 userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register')
-    .then (userRouter.post('/user', usersController.create, (req, res) => {
+    .then (userRouter.post('/', usersController.create, (req, res) => {
         res.render('user/add-vet-info');
     })
 );
