@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(
     session({
         secret: process.env.SECRET_KEY,
-        resave: false,
+        resave: true,
         saveUninitialized: true,
     })
 );

@@ -1,5 +1,5 @@
 const Vet = require('../models/Vet');
-const db = require('../db/config');
+
 
 const vetsController = {};
 
@@ -11,16 +11,19 @@ vetsController.create = (req, res, next) => {
         url: req.body.url,            
         user_id: req.user.id,
     })
-        .then((vet) => {
-            res.redirect(`/vets/${vet.id}`);            
+        .save()
+        .then((savedVet) => {
+            res.redirect(`/vets/${savedVet.id}`);            
             })
             .catch(next);
     };
 
 vetsController.index = (req, res) => {
-    return Vet.getAll()
-    .then(() => {
-        res.render('/vets/')
+    vets.getAll(req.params.name)
+    .then((vets) => {
+        res.render('/vets/', {
+            data: { vets },
+        })
     })
 };    
 

@@ -1,7 +1,7 @@
 const db = require('../db/config');
 
 class User {
-    constructor({ id, username, email, password_digest }) {
+    constructor(user) {
         this.id = user.id;
         this.username = user.username;
         this.email = user.email;

@@ -1,36 +1,48 @@
 const db = require('../db/config');
+const { index } = require('../controllers/vets-controller');
+const User = require('./User');
 
 
 
 class Vet {
-    constructor({ id, name, address, phone, url, user_id }) {
+    constructor(vet) {
         this.id = vet.id || null;
         this.name = vet.name;
         this.address = vet.address;
         this.phone = vet.phone;
         this.url = vet.url;
-        this.user_id = vet.user_id;
+        this.user_id = vet.user(id);
     }
 
     static getAll() {
          return db
-         .manyOrNone('SELECT * FROM vets')
-         .then((vets) => {
-             return vets.map((vet) => {
-                 return new this(vet);
-             });
-         });
+         .manyOrNone('SELECT * FROM vets ORDER BY name ABC')
+        //  .then((vets) => {
+        //      return vets.index((db.vets) => {
+        //             return savedVet.getAll(this, vet)
+        //      })
+        //      });
+        //  }
     }
 
-     static getById(id) {
+    static getById(id) {
          return db
          .oneOrNone('SELECT * FROM vets WHERE id = $1', id)
          .then((vet) => {
-             if (vet) return new this (vet);
-         });
+             return vets.map((vet) => {
+                 return new this(vet);
+             });
+            //  if (vet) return new this(vet);
+         })
     }
 
-
+    static getByUserId(user_id) {
+        return db
+        .manyOrNone(`SELECT * FROM vets WHERE user_id = user.user_id`, user_id)
+        .then(() => {
+            return Vet.getById(id);
+        })
+    }
     save() {
     return db.one(
         `INSERT INTO vets

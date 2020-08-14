@@ -1,23 +1,30 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const Vet = require('../models/Vet');
+const { render } = require('ejs');
 
 const usersController = { 
 
-    index: (req, res, next) => {
+    index(req, res) {
         req.user
-        .findUserVets()
-        .then((vets) => {
-            res.json({
-                message: 'Put a user profile page on this route',
-                data: {
-                    user: req.user, vets,
-                },
-            });
+        .then((user) => {
+            res.render('/user/profile')
+            return user[{ data: req.user  }];
+            
         })
-        .catch(next);    
+    //     req.user
+    //     .findUserVets()
+    //     .then((Vet) => {
+    //         req.Vet(getByUserId($/user-id/),  => {  res.render('/user/profile');
+    //         return { vets }
+            
+    //         });
+    //     })
+    //     .catch(next);    
+    // },
+
     },
-
-
+        
     create: (req, res, next) => {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(req.body.password, salt);

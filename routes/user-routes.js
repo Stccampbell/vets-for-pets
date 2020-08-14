@@ -8,13 +8,15 @@ const authHelpers = require('../services/auth/auth-helpers');
 
 userRouter.get('/login', authHelpers.loginRequired, (req, res) => {
     res.render('auth/login');
-})
+});
+
+userRouter.get('/')
 
 userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register');
 });
 
-userRouter.post('/profile', usersController.create, (req, res) => {
+userRouter.post('/user', usersController.create, (req, res) => {
     res.render('user/add-vet-info');
 });
 
