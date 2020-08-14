@@ -9,13 +9,6 @@ const passport = require('passport');
 const app = express();
 require('dotenv').config();
 
-const authRouter = require('./routes/auth-routes');
-app.use('/auth', authRouter);
-
-const userRouter = require('./routes/user-routes');
-app.use('/user', userRouter);
-
-const vetsRouter = require('./routes/vets-routes');
 // app.use('/vets', vetsRouter);
 
 app.use(methodOverride('_method'));
@@ -37,6 +30,10 @@ app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+const authRouter = require('./routes/auth-routes');
+const userRouter = require('./routes/user-routes');
+const vetsRouter = require('./routes/vets-routes');
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`I'm listening on port ${PORT}`);
@@ -48,6 +45,9 @@ app.get('/', (req, res) => {
     });
 });
 
+
+app.use('/auth', authRouter);
+app.use('/user', userRouter);
 // app.use('/vets-for-pets', vetsRouter);
 
 app.use('*', (req, res) => {
