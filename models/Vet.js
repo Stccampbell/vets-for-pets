@@ -1,6 +1,6 @@
 const db = require('../db/config');
 const { index } = require('../controllers/vets-controller');
-const User = require('./User');
+const User = require('./user');
 
 
 

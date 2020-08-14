@@ -1,11 +1,11 @@
 const db = require('../db/config');
 
 class User {
-    constructor(user) {
-        this.id = user.id;
-        this.username = user.username;
-        this.email = user.email;
-        this.password_digest = user.password_digest;
+    constructor({ id, username, email, password_digest }) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password_digest = password_digest;
         // this.user_id = vets.user_id || null;
     }
 
@@ -13,7 +13,7 @@ class User {
         return db.oneOrNone
         ('SELECT * FROM users WHERE username = $1', username)
         .then((user) => {
-            if (user) return new this(user);
+            if (user) return new this(User);
             else throw new Error('User not found');
         });
     }

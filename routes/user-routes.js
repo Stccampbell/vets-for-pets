@@ -13,12 +13,17 @@ userRouter.get('/login', authHelpers.loginRequired, (req, res) => {
 userRouter.get('/')
 
 userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
-    res.render('auth/register');
+    res.render('auth/register')
+    .then (userRouter.post('/user', usersController.create, (req, res) => {
+        res.render('user/add-vet-info');
+    })
+);
 });
-
-userRouter.post('/user', usersController.create, (req, res) => {
-    res.render('user/add-vet-info');
-});
+// userRouter.get('/register', )
+// userRouter.post('/new', usersController.create), 
+// userRouter.post('/make-profile', usersController.(req, res) => {
+//      res.render('user/add-vet-info');
+// });
 
 userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
 
