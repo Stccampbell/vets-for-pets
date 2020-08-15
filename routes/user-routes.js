@@ -24,6 +24,11 @@ userRouter.post('/', usersController.create);
 
 userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
 
+userRouter.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('back');
+});
+
 
 
 module.exports = userRouter;
