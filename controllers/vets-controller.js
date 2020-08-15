@@ -9,7 +9,6 @@ vetsController.create = (req, res, next) => {
         address: req.body.address,
         phone: req.body.phone,
         url: req.body.url,            
-        user_id: req.user.id,
     })
         .save()
         .then((savedVet) => {

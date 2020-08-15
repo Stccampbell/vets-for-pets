@@ -11,7 +11,6 @@ class Vet {
         this.address = vet.address;
         this.phone = vet.phone;
         this.url = vet.url;
-        this.user_id = vet.user(id);
     }
 
     static getAll() {
