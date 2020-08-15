@@ -2,10 +2,10 @@
 
 CREATE TABLE vets (
     id SERIAL PRIMARY KEY,
-    oganization VARCHAR,
+    organization VARCHAR,
     address TEXT,
-    phone VARCHAR(10),
+    phone VARCHAR,
     url VARCHAR
 );
 
-ALTER TABLE users
+ALTER TABLE users ADD COLUMN vet_id INTEGER REFERENCES vets(id);
