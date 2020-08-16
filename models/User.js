@@ -1,5 +1,6 @@
 const db = require('../db/config');
 const { hash } = require('bcryptjs');
+const usersController = require('../controllers/users-controller');
 
 class User {
     constructor({ id, username, email, password_digest }) {
@@ -12,6 +13,16 @@ class User {
     static findByUserName(username) {
         return db
             .oneOrNone('SELECT * FROM users WHERE username = $1', username)
+            .then((user) => {
+                if (user) return new this(user);
+                if (!user) return err('User not found');
+            });
+            //     return user.map(() => {
+            //         return new User({});
+            //     });
+
+            //     })
+            
             
     }
 

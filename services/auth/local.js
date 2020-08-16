@@ -13,7 +13,7 @@ passport.use(
         console.log('local strategy');
         User.findByUserName(username)
         .then((user) => {
-            console.log(user);
+            
             if (!user) {
                 return done(null, false);
             }

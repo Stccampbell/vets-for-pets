@@ -5,24 +5,35 @@ const usersController = require('../controllers/users-controller');
 
 const authHelpers = require('../services/auth/auth-helpers');
 
+const passport = require('../services/auth/local');
 
-userRouter.get('/login', authHelpers.loginRequired, (req, res) => {
-    res.render('auth/login');
-});
 
-userRouter.get('/')
-// userRouter.post('/new', usersController.create);
-userRouter.get('/new', authHelpers.loginRedirect, (req, res) => {
+// userRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
+//     res.render('/user-profile');
+// });
+userRouter.get('/user-profile', usersController.show);
+
+userRouter.post('/login', 
+    passport.authenticate('local', {
+        successRedirect: '/user-profile',
+        failureRedirect: '/auth/register',
+        failureFlash: true,
+    })
+);
+
+
+
+userRouter.get('auth/register', authHelpers.loginRedirect, (req, res) => {
     res.render('auth/register')})
 userRouter.post('/', usersController.create);    
 
-    // .then (userRouter.post('user', usersController.create()))});
-// userRouter.post('/new', usersController.create), 
-// userRouter.post('/make-profile', usersController.(req, res) => {
-//      res.render('user/add-vet-info');
-// });
+userRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
+    res.render('user/make-profile')})
+// userRouter.post('/')
+    
 
-userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
+    
+// userRouter.get('/auth', authHelpers.loginRequired, usersController.index);
 
 userRouter.get('/logout', (req, res) => {
     req.logout();

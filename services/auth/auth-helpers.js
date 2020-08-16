@@ -7,12 +7,12 @@ const authHelpers = {
     },
 
     loginRedirect: (req, res, next) => {
-    if (req.user) return res.redirect('/user/profile');
+    if (req.user) return res.redirect('/user-profile');
     return next();
     },
 
     loginRequired: (req, res, next) => {
-    if (!req.user) return res.redirect('/auth/login');
+    if (!req.user) return res.redirect('auth/register');
     return next();
     }
 

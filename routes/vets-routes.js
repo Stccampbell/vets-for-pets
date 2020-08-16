@@ -5,6 +5,7 @@ const authHelpers = require('../services/auth/auth-helpers');
 const vetsController = require('../controllers/vets-controller');
 
 
+
 vetsRouter.get('/vets', vetsController.index
 );
 vetsRouter.post('/vet', authHelpers.loginRequired, vetsController.create);

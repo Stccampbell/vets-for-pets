@@ -5,13 +5,31 @@ const { render } = require('ejs');
 
 
 const usersController = {
-    index(req, res) {
-        res.json({
-            message: 'put a user profile page on this route',
-            data: {
-                user: req.user,
-            },
-        });
+    // index(req, res) {
+        // res.json({
+        //     message: 'put a user profile page on this route',
+        //     data: {
+        //         user: req.user,
+        //     },
+    index(req, res, next) {
+        req.login(user, (err) => {
+        // if (err) res.redirect('/new'); 
+        return { user_id: $1 };
+        
+
+        })
+    },
+
+    show(req, res, next) {
+        user.findByUserName(req.body.username)
+        .then((user) => {
+            return user.map((user) => {
+                new User(user);
+            })
+            // res.locals.user = user;
+            next();
+        })
+        .catch(next);
     },
 
     create(req, res, next) {
@@ -27,12 +45,12 @@ const usersController = {
             .then((user) => {
                 req.login(user, (err) => {
                     if (err) return next(err);
-                    res.redirect('/user');
+                    res.redirect('/user-profile');
                 });
             })
             .catch(next);
-    },
-};
+    }};
+
 
 module.exports = usersController;
 
