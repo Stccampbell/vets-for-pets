@@ -11,15 +11,19 @@ const passport = require('../services/auth/local');
 // userRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
 //     res.render('/user-profile');
 // });
-//userRouter.get('/user-profile', usersController.show);
+userRouter.get('/user-profile', usersController.index, (req, res) => {
+    res.render('user/user-profile')}
+);
+        //this works dont toucch it!///^^^^
 
 userRouter.post('/login', 
     passport.authenticate('local', {
-        successRedirect: '/user-profile',
+        successRedirect: '/user/user-profile',
         failureRedirect: '/auth/register',
         failureFlash: true,
     })
 );
+//  this works down touch it!!!^^^^^
 
 
 

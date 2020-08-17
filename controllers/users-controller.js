@@ -6,17 +6,13 @@ const { render } = require('ejs');
 
 const usersController = {
     
-       
-
-
-
-    index(req, res) {
+       index(req, res) {
             res.json({
                 message: 'put a user profile page on this route',
                 data: {
                     user: req.user,
                 },
-            })
+            });
         },
    
 
@@ -33,7 +29,7 @@ const usersController = {
             .then((user) => {
                  req.login(user, (err) => {
                      if (err) return next(err);
-                    res.redirect('/user-profile');
+                    res.redirect('/user');
                 });
             })
         

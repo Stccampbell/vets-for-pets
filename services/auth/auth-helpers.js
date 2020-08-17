@@ -7,9 +7,11 @@ const authHelpers = {
     },
 
     loginRedirect: (req, res, next) => {
-    if (req.user) return res.redirect('/user-profile');
+    if (req.user) return res.redirect('user/user-profile');
     return next();
     },
+
+    //^^this works don't touch it
 
     loginRequired: (req, res, next) => {
     if (!req.user) return res.redirect('auth/register');
